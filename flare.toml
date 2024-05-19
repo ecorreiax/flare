@@ -1,0 +1,6 @@
+Driver="postgres"
+User="flare"
+Name="flare"
+Host="localhost"
+Port="5432"
+Password="12345678"

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flare CLI</title>
+    <style>
+      body {
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        font-feature-settings: "cv11", "salt", "ss01", "ss03", "cv01", "cv02", "cv03", "cv04", "cv05", "cv06", "cv09", "cv10";
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            container: {
+              center: true,
+              padding: '1.6rem',
+            },
+          }
+        }
+      }
+    </script>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+  </head>
+  <body class="bg-white flex flex-col min-h-screen h-full">
+    <header class="h-[80px] flex items-center justify-center border-b border-b-gray-200">
+      <nav class="container text-center">
+        <p class="font-black text-3xl text-red-500">Flare CLI</p>
+      </nav>
+    </header>
+    <main class="flex-grow mx-auto max-full pb-36 w-full md:max-w-6xl px-6 md:px-12">
+      <div class="mt-36 mx-auto max-w-xl lg:max-w-2xl w-full flex flex-col items-center justify-center text-center gap-y-8">
+        <p class="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 leading-7 md:leading-10">
+          Flare is a lightweight CLI for managing databases in Go projects.
+        </p>
+        <div class="flex items-center gap-x-3">
+          <!-- Place this tag where you want the button to render. -->
+          <a class="github-button" href="https://github.com/ecorreiax/.nvim" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Star ecorreiax/.nvim on GitHub">Star</a>
+          <!-- Place this tag where you want the button to render. -->
+          <a class="github-button" href="https://github.com/ecorreiax" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow">Follow</a>
+        </div>
+      </div>
+      <div class="mt-36 mx-auto max-w-4xl w-full">
+        <ul class="flex flex-col">
+          <li class="w-full flex flex-col gap-y-4 pb-8 [&:not(:last-child)]:border-b border-b-gray-200">
+            <div class="p-4 w-full">
+              <p class="flex text-xl font-medium leading-6 md:leading-4 text-gray-800">
+                <span class="text-gray-500">$ flare <span class="text-red-500">database</span></span>
+              </p>
+            </div>
+            <div class="w-full px-4 pb-4">
+              <div class="flex flex-col gap-y-8">
+                <div class="flex flex-col gap-y-1">
+                  <p class="text-gray-900 font-semibold">Create</p>
+                  <p class="text-gray-500 text-sm">It creates a new schema in the remote database if a previous schema doesn't already exists.</p>
+                  <div class="mt-2 p-2 bg-gray-50 text-gray-500 border border-gray-100 rounded">$ flare database create</div>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                  <p class="text-gray-900 font-semibold">Drop</p>
+                  <p class="text-gray-500 text-sm">It drops the schema from the remote database.</p>
+                  <div class="mt-2 p-2 bg-gray-50 text-gray-500 border border-gray-100 rounded">$ flare database drop</div>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                  <p class="text-gray-900 font-semibold">Seed</p>
+                  <p class="text-gray-500 text-sm">Apply mock's data from your seed's file to the remote database.</p>
+                  <div class="mt-2 p-2 bg-gray-50 text-gray-500 border border-gray-100 rounded">$ flare database seed</div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="w-full flex flex-col gap-y-4 pt-8 [&:not(:last-child)]:border-b border-b-gray-200">
+            <div class="p-4 w-full">
+              <p class="flex text-xl font-medium leading-6 md:leading-4 text-gray-800">
+                <span class="text-gray-500">$ flare <span class="text-red-500">generate</span></span>
+              </p>
+            </div>
+            <div class="w-full px-4 pb-4">
+              <div class="flex flex-col gap-y-8">
+                <div class="flex flex-col gap-y-1">
+                  <p class="text-gray-900 font-semibold">Migration</p>
+                  <p class="text-gray-500 text-sm">A new versioned SQL migration file is created with a default template.</p>
+                  <div class="mt-2 p-2 bg-gray-50 text-gray-500 border border-gray-100 rounded">$ flare generate migration [MODEL] [COLUMNS]</div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
+    <footer class="w-full border-t border-t-gray-200 bg-white py-4 flex items-center justify-center">
+      <p class="font-black text-lg text-red-500">Flare CLI</p>
+    </footer>
+  </body>
+</html>
