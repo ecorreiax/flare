@@ -19,4 +19,4 @@ Want to help develop Flare CLI? Check out our contributing documentation.
 If you find an issue, please report it on the issue tracker.
 
 ## License
-This project is under Apache License 2.0 license
+This project is under [Apache License 2.0](https://github.com/ecorreiax/flare/blob/main/LICENSE) license
