@@ -5,6 +5,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
+	"github.com/ecorreiax/flare/cmd"
 	"github.com/ecorreiax/flare/drivers/mysql"
 	"github.com/ecorreiax/flare/drivers/postgres"
 	"github.com/ecorreiax/flare/internal/config"
@@ -39,6 +40,20 @@ func main() {
 						Action: wrap(func(db *flare.Database, _ *cli.Context) error {
 							return db.Drop()
 						}),
+					},
+				},
+			},
+			{
+				Name:    "generate",
+				Aliases: []string{"g"},
+				Usage:   "Generate templated files",
+				Subcommands: []*cli.Command{
+					{
+						Name:  "migration",
+						Usage: "Create a new migration",
+						Action: func(c *cli.Context) error {
+							return cmd.GenerateMigrationFile(c)
+						},
 					},
 				},
 			},

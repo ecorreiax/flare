@@ -16,6 +16,8 @@ type Config struct {
 	Host     string
 	Port     string
 	Password string
+
+	Path string
 }
 
 var AppConfig Config
@@ -33,6 +35,7 @@ func init() {
 		Host:     tree.Get("Host").(string),
 		Port:     tree.Get("Port").(string),
 		Password: tree.Get("Password").(string),
+		Path:     tree.Get("Path").(string),
 	}
 
 	if err := validateConfig(AppConfig); err != nil {

@@ -4,3 +4,5 @@ Name="flare"
 Host="localhost"
 Port="5432"
 Password="12345678"
+
+Path="db"

@@ -25,6 +25,9 @@
 # Go workspace file
 go.work
 
+# Go generated files
+/db
+
 # Volumes
 /docker/data
 
