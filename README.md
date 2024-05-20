@@ -26,11 +26,11 @@ Password="12345678"
 The `database` or shortcut `db` command allows you to manage your database directly. With it you can:
 
 ```bash
-// creates the specified database
-flare database create
+# creates the specified database
+$ flare database create
 
-// drops the existing database
-flare database drop
+# drops the existing database
+$ flare database drop
 ```
 
 ## Documentation
