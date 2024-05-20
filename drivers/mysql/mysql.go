@@ -12,7 +12,7 @@ import (
 
 type MysqlDriver struct{}
 
-func (p *MysqlDriver) Open() (*sql.DB, error) {
+func (d *MysqlDriver) Open() (*sql.DB, error) {
 	url, err := config.AppConfig.BuildConnStr()
 	if err != nil {
 		return nil, errors.New(err.Error())
@@ -20,10 +20,10 @@ func (p *MysqlDriver) Open() (*sql.DB, error) {
 	return sql.Open("mysql", url.String())
 }
 
-func (p *MysqlDriver) Create() error {
+func (d *MysqlDriver) Create() error {
 	dbName := config.AppConfig.Name
 
-	db, err := p.Open()
+	db, err := d.Open()
 	if err != nil {
 		return err
 	}
@@ -34,10 +34,10 @@ func (p *MysqlDriver) Create() error {
 	return err
 }
 
-func (p *MysqlDriver) Drop() error {
+func (d *MysqlDriver) Drop() error {
 	dbName := config.AppConfig.Name
 
-	db, err := p.Open()
+	db, err := d.Open()
 	if err != nil {
 		return err
 	}

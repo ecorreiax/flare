@@ -12,7 +12,7 @@ import (
 
 type PostgresDriver struct{}
 
-func (p *PostgresDriver) Open() (*sql.DB, error) {
+func (d *PostgresDriver) Open() (*sql.DB, error) {
 	url, err := config.AppConfig.BuildConnStr()
 	if err != nil {
 		return nil, errors.New(err.Error())
@@ -20,10 +20,10 @@ func (p *PostgresDriver) Open() (*sql.DB, error) {
 	return sql.Open("postgres", url.String())
 }
 
-func (p *PostgresDriver) Create() error {
+func (d *PostgresDriver) Create() error {
 	dbName := config.AppConfig.Name
 
-	db, err := p.Open()
+	db, err := d.Open()
 	if err != nil {
 		return err
 	}
@@ -34,10 +34,10 @@ func (p *PostgresDriver) Create() error {
 	return err
 }
 
-func (p *PostgresDriver) Drop() error {
+func (d *PostgresDriver) Drop() error {
 	dbName := config.AppConfig.Name
 
-	db, err := p.Open()
+	db, err := d.Open()
 	if err != nil {
 		return err
 	}
