@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"net/url"
 
 	"github.com/pelletier/go-toml"
 )
@@ -59,7 +60,7 @@ func validateConfig(c Config) error {
 	return nil
 }
 
-func (c *Config) BuildConnStr() string {
+func (c *Config) BuildConnStr() (*url.URL, error) {
 	var connStr string
 
 	switch c.Driver {
@@ -80,8 +81,8 @@ func (c *Config) BuildConnStr() string {
 			c.Port,
 		)
 	default:
-		fmt.Println("database provider missing or invalid")
+		return nil, errors.New("database provider missing or invalid")
 	}
 
-	return connStr
+	return url.Parse(connStr)
 }

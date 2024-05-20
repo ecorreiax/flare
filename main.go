@@ -5,9 +5,16 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	"github.com/ecorreiax/flare/cmd/database"
-	"github.com/ecorreiax/flare/cmd/generate"
+	"github.com/ecorreiax/flare/drivers/mysql"
+	"github.com/ecorreiax/flare/drivers/postgres"
+	"github.com/ecorreiax/flare/internal/config"
+	"github.com/ecorreiax/flare/internal/flare"
 )
+
+func init() {
+	flare.RegisterDriver(&mysql.MysqlDriver{}, "mysql")
+	flare.RegisterDriver(&postgres.PostgresDriver{}, "postgres")
+}
 
 func main() {
 	app := &cli.App{
@@ -19,16 +26,20 @@ func main() {
 				Aliases: []string{"db"},
 				Usage:   "Database related commands",
 				Subcommands: []*cli.Command{
-					database.DatabaseCreateCommand,
-					database.DatabaseDropCommand,
-				},
-			},
-			{
-				Name:    "generate",
-				Aliases: []string{"g"},
-				Usage:   "Generate related commands",
-				Subcommands: []*cli.Command{
-					generate.GenerateMigrationCommand,
+					{
+						Name:  "create",
+						Usage: "Create the database",
+						Action: wrap(func(db *flare.Database, _ *cli.Context) error {
+							return db.Create()
+						}),
+					},
+					{
+						Name:  "drop",
+						Usage: "Drop the database",
+						Action: wrap(func(db *flare.Database, _ *cli.Context) error {
+							return db.Drop()
+						}),
+					},
 				},
 			},
 		},
@@ -37,5 +48,16 @@ func main() {
 	err := app.Run(os.Args)
 	if err != nil {
 		println(err.Error())
+	}
+}
+
+func wrap(f func(*flare.Database, *cli.Context) error) cli.ActionFunc {
+	return func(c *cli.Context) error {
+		url, err := config.AppConfig.BuildConnStr()
+		if err != nil {
+			return err
+		}
+		db := flare.New(url)
+		return f(db, c)
 	}
 }
