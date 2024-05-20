@@ -8,7 +8,7 @@ It also helps you to keep you schemas in sync across multiple developers and ser
 macOS, Linux and Docker
 
 #### Supported databases
-PostgreSQL and MySql
+PostgreSQL and MySQL
 
 ## Documentation
 You can find our getting started guides and general CLI usage here.
