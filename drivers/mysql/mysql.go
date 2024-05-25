@@ -8,10 +8,8 @@ import (
 
 type MysqlDriver struct{}
 
-const DBScheme = "mysql"
-
 func (d *MysqlDriver) Open() (*sql.DB, error) {
-	return query.SQLOpen(d, DBScheme)
+	return query.SQLOpen(d)
 }
 
 func (d *MysqlDriver) Create() error {

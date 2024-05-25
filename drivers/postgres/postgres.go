@@ -8,10 +8,8 @@ import (
 
 type PostgresDriver struct{}
 
-const DBScheme = "postgres"
-
 func (d *PostgresDriver) Open() (*sql.DB, error) {
-	return query.SQLOpen(d, DBScheme)
+	return query.SQLOpen(d)
 }
 
 func (d *PostgresDriver) Create() error {

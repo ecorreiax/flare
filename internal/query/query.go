@@ -11,12 +11,13 @@ import (
 	_ "github.com/lib/pq"
 )
 
-func SQLOpen(d flare.Driver, DBScheme string) (*sql.DB, error) {
+func SQLOpen(d flare.Driver) (*sql.DB, error) {
 	url, err := config.AppConfig.BuildConnStr()
+	scheme := url.Scheme
 	if err != nil {
 		return nil, errors.New(err.Error())
 	}
-	return sql.Open(DBScheme, url.String())
+	return sql.Open(scheme, url.String())
 }
 
 func SQLCreate(d flare.Driver) error {
